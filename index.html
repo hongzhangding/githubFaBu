@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub 项目发布全攻略</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f6f8fa; }
+        .card { background: white; border: 1px solid #d0d7de; border-radius: 6px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 3px 0 rgba(26, 37, 51, 0.16); }
+        h1 { color: #0969da; text-align: center; }
+        h2 { border-bottom: 2px solid #0969da; padding-bottom: 5px; color: #1f2328; }
+        .step-num { background: #0969da; color: white; border-radius: 50%; width: 30px; height: 30px; display: inline-block; text-align: center; line-height: 30px; margin-right: 10px; }
+        code { background: #afb8c133; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
+        .warning { background: #fff8c5; border-left: 5px solid #d4a72c; padding: 15px; margin: 10px 0; }
+        .tip { background: #ddf4ff; border-left: 5px solid #0969da; padding: 15px; margin: 10px 0; }
+        img-placeholder { display: block; background: #eee; height: 150px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; color: #666; font-style: italic; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+<h1>🚀 GitHub 仓库创建与发布指南</h1>
+
+<div class="card">
+    <h2><span class="step-num">1</span> 第一步：创建仓库</h2>
+    <p>登录 GitHub，点击页面右上角的 <strong>+</strong> 号，选择 <strong>New repository</strong>。</p>
+    <ul>
+        <li><strong>Repository name:</strong> 输入你的项目名（例如 <code>deepseek_demo</code>）。</li>
+        <li><strong>Public/Private:</strong> 必须选择 <strong>Public</strong>（免费版私有仓库无法开启 Pages）。</li>
+        <li>勾选 <strong>Add a README file</strong>（可选，方便直接看到说明）。</li>
+    </ul>
+    
+</div>
+
+<div class="card">
+    <h2><span class="step-num">2</span> 第二步：上传项目文件</h2>
+    <p>如果你不使用 Git 命令行，可以使用最简单的网页上传法：</p>
+    <ol>
+        <li>进入仓库页面，点击 <strong>Add file</strong> -> <strong>Upload files</strong>。</li>
+        <li>将你的 <code>index.html</code> 和资源文件夹拖入上传区域。</li>
+        <li class="warning"><strong>关键：</strong> 确保 <code>index.html</code> 直接位于根目录下，而不是缩在某个文件夹里。</li>
+        <li>点击底部的 <strong>Commit changes</strong>。</li>
+    </ol>
+    
+</div>
+
+<div class="card">
+    <h2><span class="step-num">3</span> 第三步：开启发布链接 (GitHub Pages)</h2>
+    <p>这是你 <code>deepseek_demo</code> 目前缺失的步骤：</p>
+    <ol>
+        <li>在仓库菜单栏点击 <strong>Settings</strong>。</li>
+        <li>在左侧边栏点击 <strong>Pages</strong>。</li>
+        <li>在 <strong>Build and deployment</strong> 下的 <strong>Branch</strong> 选择 <code>main</code>（或者 <code>master</code>）。</li>
+        <li>点击右侧的 <strong>Save</strong> 按钮。</li>
+    </ol>
+    <div class="tip">
+        <strong>如何确认成功？</strong><br>
+        刷新 <strong>Actions</strong> 选项卡。如果看到一个名为 <code>pages-build-deployment</code> 的任务正在运行（黄色圆圈），说明系统正在生成链接。
+    </div>
+    
+</div>
+
+<div class="card">
+    <h2><span class="step-num">4</span> 第四步：访问你的网站</h2>
+    <p>部署完成后，回到 <strong>Settings -> Pages</strong> 页面。你会看到一行文字：</p>
+    <p><code>Your site is live at https://你的用户名.github.io/deepseek_demo/</code></p>
+    <p>直接点击该链接即可访问。</p>
+</div>
+
+<div class="card">
+    <h2>❓ 为什么 deepseek_demo 之前报 404？</h2>
+    <p>根据你提供的 Actions 截图，原因如下：</p>
+    <ul>
+        <li><strong>未触发工作流：</strong> 你的 Actions 页面是空白的，说明 GitHub 还没有接收到“发布请求”。这通常是因为没有在 Pages 设置里点击 <strong>Save</strong>。</li>
+        <li><strong>路径问题：</strong> 如果你的 HTML 在仓库里路径是 <code>demo/index.html</code>，那么访问地址也必须加上 <code>/demo/</code>。</li>
+    </ul>
+</div>
+
+</body>
+</html>
